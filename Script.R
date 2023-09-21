@@ -24,3 +24,5 @@ tracks <- billboard_1 %>%
 
 #remove "N/A" from data set
 mean(is.na(tracks$valence)) # checking % of missing values in valence column
+
+map_dbl(tracks, \(x) mean(is.na(x))) # checking % of missing values in all columns
