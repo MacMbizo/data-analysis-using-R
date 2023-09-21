@@ -26,3 +26,25 @@ tracks <- billboard_1 %>%
 mean(is.na(tracks$valence)) # checking % of missing values in valence column
 
 map_dbl(tracks, \(x) mean(is.na(x))) # checking % of missing values in all columns
+
+ggplot(tracks, aes(x = valence,
+                   y = no1)) + 
+  geom_boxplot()
+  theme_minimal()
+  
+t.test(valence ~ no1,
+       data = tracks)
+
+# outcome:
+#Welch Two Sample t-test
+
+#data:  valence by no1
+#t = -2.5422, df = 1092.6, p-value = 0.01115
+#alternative hypothesis: true difference in means between group FALSE and group TRUE is not equal to 0
+#95 percent confidence interval:
+#  -0.03577254 -0.00460695
+#sample estimates:
+#  mean in group FALSE  mean in group TRUE 
+#0.6009221           0.6211119 
+
+#No1 songs are more valent but the different is small.
