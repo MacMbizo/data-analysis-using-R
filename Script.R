@@ -11,4 +11,8 @@ View(beats)
 
 billboard_1  <- billboard %>% 
   mutate(no1 =  (peak_position  == 1),
-         week_id = mdy(week_id)) #  change week_id data type to "date"
+         week_id = mdy(week_id)) %>% #  change week_id data type to "date"
+  group_by(song_id) %>% 
+  arrange(week_position, .by_group = TRUE) %>% 
+  filter(!duplicated(song_id))
+
