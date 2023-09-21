@@ -21,3 +21,6 @@ billboard_1  <- billboard %>%
 # joining beats data and joining it to billboard_1
 tracks <- billboard_1 %>% 
   left_join(beats, by = "song_id")  
+
+#remove "N/A" from data set
+mean(is.na(tracks$valence)) # checking % of missing values in valence column
