@@ -14,5 +14,10 @@ billboard_1  <- billboard %>%
          week_id = mdy(week_id)) %>% #  change week_id data type to "date"
   group_by(song_id) %>% 
   arrange(week_position, .by_group = TRUE) %>% 
-  filter(!duplicated(song_id))
+  filter(!duplicated(song_id)) %>% 
+  ungroup() %>% 
+  select(song_id,no1)
 
+# joining beats data and joining it to billboard_1
+tracks <- billboard_1 %>% 
+  left_join(beats, by = "song_id")  
