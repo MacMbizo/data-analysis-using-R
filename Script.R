@@ -7,4 +7,8 @@ beats <- tuesdata$audio_features
 View(billboard)
 View(beats)
 
+# Are songs ranked to be number one generally more cheerful?
 
+billboard_1  <- billboard %>% 
+  mutate(no1 =  (peak_position  == 1),
+         week_id = mdy(week_id)) #  change week_id data type to "date"
